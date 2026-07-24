@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5b8bff"/>
+      <stop offset="100%" stop-color="#3a6bf0"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
+  <!-- 공책: 흰 종이 + 왼쪽 링, 위에 연필 -->
+  <rect x="16" y="13" width="30" height="38" rx="4" fill="#ffffff"/>
+  <g stroke="#c9d6f5" stroke-width="2" stroke-linecap="round">
+    <line x1="23" y1="24" x2="40" y2="24"/>
+    <line x1="23" y1="31" x2="40" y2="31"/>
+    <line x1="23" y1="38" x2="35" y2="38"/>
+  </g>
+  <!-- 왼쪽 스프링 링 -->
+  <g fill="#9fb6ee">
+    <circle cx="16" cy="21" r="2.4"/>
+    <circle cx="16" cy="32" r="2.4"/>
+    <circle cx="16" cy="43" r="2.4"/>
+  </g>
+  <!-- 기억 나무 새싹 (복습해서 자란다는 상징) -->
+  <path d="M39 43 q0 -6 5 -8 q-1 5 -5 8 z" fill="#3cc47a"/>
+  <path d="M39 43 q0 -5 -4 -6 q1 4 4 6 z" fill="#5ed992"/>
+  <line x1="39" y1="43" x2="39" y2="47" stroke="#3cc47a" stroke-width="2" stroke-linecap="round"/>
+  <!-- 연필 -->
+  <g transform="rotate(45 46 20)">
+    <rect x="43.5" y="9" width="5" height="20" rx="1.2" fill="#ffc93c"/>
+    <rect x="43.5" y="9" width="5" height="4" fill="#ff8f5e"/>
+    <path d="M43.5 29 L46 33 L48.5 29 z" fill="#4a4a4a"/>
+  </g>
+</svg>
