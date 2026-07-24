@@ -2,21 +2,32 @@ import { PHRASES, type Phrase } from '../data/phrases'
 import { fromDayId, todayId, type DayId } from './date'
 
 /**
- * 문장이 종류별로 묶여 있어서, 연속으로 뽑으면 한 종류만 나온다.
- * 회화·명언·속담을 번갈아 배치한 순서를 미리 만들어 두면 어느 날 뽑아도 골고루 섞인다.
+ * 문장이 종류별로 묶여 있어서 연속으로 뽑으면 한 종류만 나온다.
+ * 종류마다 개수가 다르므로(회화 많고 속담 적음) '가장 뒤처진 종류를 먼저 꺼내는' 방식으로
+ * 전체 길이에 고르게 흩뿌린다. 그러면 어느 날 5개를 연속으로 뽑아도 자연스럽게 섞인다.
  */
 const INTERLEAVED: Phrase[] = (() => {
-  const groups = {
-    talk: PHRASES.filter((p) => p.type === 'talk'),
-    quote: PHRASES.filter((p) => p.type === 'quote'),
-    proverb: PHRASES.filter((p) => p.type === 'proverb'),
-  }
+  const groups = [
+    PHRASES.filter((p) => p.type === 'talk'),
+    PHRASES.filter((p) => p.type === 'quote'),
+    PHRASES.filter((p) => p.type === 'proverb'),
+  ]
+  const idx = [0, 0, 0]
+  const total = groups.reduce((s, g) => s + g.length, 0)
   const order: Phrase[] = []
-  const max = Math.max(groups.talk.length, groups.quote.length, groups.proverb.length)
-  for (let i = 0; i < max; i++) {
-    if (groups.talk[i]) order.push(groups.talk[i])
-    if (groups.quote[i]) order.push(groups.quote[i])
-    if (groups.proverb[i]) order.push(groups.proverb[i])
+  while (order.length < total) {
+    // 이미 꺼낸 비율(idx/len)이 가장 낮은 = 가장 뒤처진 종류를 고른다
+    let best = -1
+    let bestRatio = Infinity
+    for (let g = 0; g < groups.length; g++) {
+      if (idx[g] >= groups[g].length) continue
+      const ratio = idx[g] / groups[g].length
+      if (ratio < bestRatio) {
+        bestRatio = ratio
+        best = g
+      }
+    }
+    order.push(groups[best][idx[best]++])
   }
   return order
 })()
