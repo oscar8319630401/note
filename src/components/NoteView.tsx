@@ -121,7 +121,7 @@ export default function NoteView({
       {/* 액션 버튼들 */}
       <div className="nv-actions no-print">
         <button className="act" onClick={onBack}>
-          ‹ 목록
+          🏠 홈
         </button>
         <button className="act" onClick={() => window.print()}>
           🖨️ 인쇄

@@ -5,7 +5,7 @@ import NoteView from './components/NoteView'
 import Review from './components/Review'
 import Quiz from './components/Quiz'
 import Collection from './components/Collection'
-import EnglishDaily from './components/EnglishDaily'
+import DailyHub from './components/DailyHub'
 import { useStore, type Note, type NewNoteInput } from './lib/store'
 import { dueNotes } from './lib/selectors'
 
@@ -43,7 +43,7 @@ export default function App() {
         {screen.kind === 'tab' && tab === 'review' && <Review onOpen={openNote} />}
         {screen.kind === 'tab' && tab === 'quiz' && <Quiz />}
         {screen.kind === 'tab' && tab === 'english' && (
-          <EnglishDaily onSaveToNote={(initial) => setScreen({ kind: 'new', initial })} />
+          <DailyHub onSaveToNote={(initial) => setScreen({ kind: 'new', initial })} />
         )}
         {screen.kind === 'tab' && tab === 'collection' && <Collection />}
 
@@ -84,7 +84,7 @@ export default function App() {
             <span className="ico">🧠</span>퀴즈
           </button>
           <button className={tab === 'english' ? 'on' : ''} onClick={() => goTab('english')}>
-            <span className="ico">📣</span>영어
+            <span className="ico">📣</span>학습
           </button>
           <button className={tab === 'collection' ? 'on' : ''} onClick={() => goTab('collection')}>
             <span className="ico">🏆</span>성취

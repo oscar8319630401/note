@@ -1025,6 +1025,65 @@ h1 {
 .pc-save:active {
   transform: scale(0.98);
 }
+.pc-hanja {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink-dim);
+}
+.pc-ex {
+  margin-top: 8px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #55607a;
+  background: #f7f9fc;
+  border-radius: 10px;
+  padding: 9px 11px;
+}
+
+/* 학습 허브 세그먼트 */
+.daily-hub .eng-head {
+  margin-bottom: 12px;
+}
+.segmented {
+  display: flex;
+  gap: 4px;
+  background: #eaeef6;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 16px;
+}
+.segmented button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-dim);
+  transition: 0.15s;
+}
+.segmented button.on {
+  background: #fff;
+  color: var(--brand);
+  box-shadow: 0 1px 4px rgba(60, 80, 130, 0.12);
+}
+
+/* 수학 공식 카드 */
+.fc-title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.fc-formula {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1c2a4a;
+  background: #eef3ff;
+  border-radius: 10px;
+  padding: 11px 13px;
+  line-height: 1.5;
+  word-break: keep-all;
+}
 
 /* ─────────────── 탭바 ─────────────── */
 

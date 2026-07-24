@@ -60,7 +60,7 @@ export default function NoteEditor({
     <div className="editor">
       <div className="editor-head">
         <button className="back" onClick={() => onDone()}>
-          ‹ 뒤로
+          🏠 홈으로
         </button>
         <span className="editor-date">📅 {prettyDate(edit?.createdAt ?? todayId())} 저장</span>
       </div>

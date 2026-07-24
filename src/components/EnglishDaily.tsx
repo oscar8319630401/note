@@ -7,8 +7,15 @@ import type { NewNoteInput } from '../lib/store'
 /**
  * 오늘의 영어 5문장. 생활회화·명언·속담이 매일 바뀐다.
  * 🔊로 원어민 발음을 듣고, 마음에 들면 영어 노트로 담을 수 있다.
+ * embedded=true면 학습 허브 안에 들어가므로 자체 제목/날짜는 감춘다.
  */
-export default function EnglishDaily({ onSaveToNote }: { onSaveToNote: (initial: Partial<NewNoteInput>) => void }) {
+export default function EnglishDaily({
+  onSaveToNote,
+  embedded = false,
+}: {
+  onSaveToNote: (initial: Partial<NewNoteInput>) => void
+  embedded?: boolean
+}) {
   const phrases = useMemo(() => dailyPhrases(), [])
   const canSpeak = speakSupported()
 
@@ -26,10 +33,12 @@ export default function EnglishDaily({ onSaveToNote }: { onSaveToNote: (initial:
 
   return (
     <div className="english">
-      <div className="eng-head">
-        <h1>오늘의 영어 5문장 📣</h1>
-        <span className="eng-date">📅 {prettyDate(todayId())}</span>
-      </div>
+      {!embedded && (
+        <div className="eng-head">
+          <h1>오늘의 영어 5문장 📣</h1>
+          <span className="eng-date">📅 {prettyDate(todayId())}</span>
+        </div>
+      )}
       <p className="muted">매일 새로운 5문장이 나와요. 🔊로 발음을 듣고 소리 내어 따라 해봐요!</p>
 
       <div className="phrase-list">
